@@ -1,7 +1,6 @@
 package br.com.diegonascimento.koinpresentation.feature.films
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
@@ -12,19 +11,18 @@ import br.com.diegonascimento.koinpresentation.model.ResultFilms
 import br.com.diegonascimento.koinpresentation.network.RequestResultCode
 import br.com.diegonascimento.koinpresentation.network.RequestResultValue
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListFilmsActivity : BaseActivity() {
 
-    private lateinit var viewModel: ListFilmsViewModel
+    private val viewModel: ListFilmsViewModel by viewModel()
     private lateinit var adapter: ItemFilmAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProviders.of(this).get(ListFilmsViewModel::class.java)
         initView()
-        viewModel.int()
         subscribeUi(viewModel)
     }
 

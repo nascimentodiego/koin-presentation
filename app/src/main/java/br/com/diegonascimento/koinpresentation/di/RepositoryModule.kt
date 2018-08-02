@@ -13,23 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package br.com.diegonascimento.koinpresentation.feature.films
+package br.com.diegonascimento.koinpresentation.di
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
-import br.com.diegonascimento.koinpresentation.model.ResultFilms
-import br.com.diegonascimento.koinpresentation.network.RequestResultValue
+import br.com.diegonascimento.koinpresentation.persistence.repository.FilmsRepository
 import br.com.diegonascimento.koinpresentation.persistence.repository.FilmsRepositoryContract
+import org.koin.dsl.module.module
 
-class ListFilmsViewModel(var filmsRepository: FilmsRepositoryContract) : ViewModel() {
-    private var mFilms: LiveData<RequestResultValue<ResultFilms>>? = null
 
-    fun getFilms(): LiveData<RequestResultValue<ResultFilms>>? {
-        if (mFilms == null) {
-            mFilms = filmsRepository.getFilms()
-        }
-
-        return this.mFilms
-    }
-
+val repositoryModule = module {
+    single { FilmsRepository(get(), get(), get("executor")) as FilmsRepositoryContract }
 }

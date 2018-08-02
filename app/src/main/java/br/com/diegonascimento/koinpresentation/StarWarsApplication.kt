@@ -16,6 +16,8 @@
 package br.com.diegonascimento.koinpresentation
 
 import android.app.Application
+import br.com.diegonascimento.koinpresentation.di.*
+import org.koin.android.ext.android.startKoin
 
 
 class StarWarsApplication : Application() {
@@ -26,5 +28,15 @@ class StarWarsApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         sInstance = this
+
+        startKoin(this,
+                arrayListOf(
+                        androidModule,
+                        networkModule,
+                        databaseModule,
+                        repositoryModule,
+                        viewModelModule
+                )
+        )
     }
 }
