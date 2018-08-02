@@ -28,9 +28,9 @@ import java.util.concurrent.Executor
 
 class FilmsRepository(private var starWarApi: StarWarsClient,
                       private var filmsDao: FilmsDao,
-                      private var executor: Executor) : BaseRepository() {
+                      private var executor: Executor) : BaseRepository(), FilmsRepositoryContract {
 
-    fun getFilms(): LiveData<RequestResultValue<ResultFilms>> {
+    override fun getFilms(): LiveData<RequestResultValue<ResultFilms>> {
         val data = MutableLiveData<RequestResultValue<ResultFilms>>()
 
         executor.execute {
