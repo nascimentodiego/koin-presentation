@@ -27,14 +27,16 @@ task clean(type: Delete) {
 }
 
 project.ext {
-    androidSupportLibraryVersion = '27.1.1'
-    androidConstraintLayoutVersion = '1.0.2'
+    androidSupportLibraryVersion = '28.0.0-beta01'
+    androidConstraintLayoutVersion = '1.1.2'
 
     architectureComponentsCompileVersion = 'compiler:1.1.1'
     architectureComponentsExtensionVersion = 'extensions:1.1.1'
     architectureComponentsRoomVersion = "runtime:1.1.0-beta3"
     architectureComponentsRoomRxJavaVersion = "rxjava2:1.1.0-beta3"
     architectureComponentsRoomCompilerVersion = "compiler:1.1.0-beta3"
+
+    koin = "1.0.0-beta-3"
 
     gsonVersion = "2.8.0"
     roomVersion = "1.1.0"
