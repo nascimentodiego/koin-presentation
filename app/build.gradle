@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "br.com.diegonascimento.koinpresentation"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    def API_ENDPOINT = "API_ENDPOINT"
+    flavorDimensions "startwars"
+    productFlavors {
+        production {
+            versionName = android.defaultConfig.versionName
+            buildConfigField "String", API_ENDPOINT, '"http://swapi.co/api/"'
+
+            dimension "startwars"
+        }
+        stage {
+            versionName = "stage_" + android.defaultConfig.versionName
+            buildConfigField "String", API_ENDPOINT, '"http://swapi.co/api/"'
+
+            dimension "startwars"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Android Support Library
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.androidSupportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.androidSupportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.ext.androidSupportLibraryVersion"
+
+
+    // Architecture Components
+    implementation "android.arch.lifecycle:$rootProject.ext.architectureComponentsExtensionVersion"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.ext.androidConstraintLayoutVersion"
+    kapt "android.arch.lifecycle:$rootProject.ext.architectureComponentsCompileVersion"
+
+    // Room (use 1.1.0-beta3 for latest beta)
+    implementation "android.arch.persistence.room:$rootProject.ext.architectureComponentsRoomVersion"
+    implementation "android.arch.persistence.room:$rootProject.ext.architectureComponentsRoomRxJavaVersion"
+    kapt "android.arch.persistence.room:$rootProject.ext.architectureComponentsRoomCompilerVersion"
+
+    //Communication
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.converter_gson"
+    implementation "com.google.code.gson:gson:$rootProject.ext.gson"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp"
+
+    //Tests
+    testImplementation "junit:junit:$rootProject.jUnitVersion"
+    testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
+    testImplementation "org.powermock:powermock-module-junit4:$rootProject.ext.powerMockito"
+    testImplementation "org.powermock:powermock-api-mockito:$rootProject.ext.powerMockito"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.espressoRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoCoreVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoCoreVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoCoreVersion"
+
+}
