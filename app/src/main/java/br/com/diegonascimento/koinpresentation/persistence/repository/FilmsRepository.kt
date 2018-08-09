@@ -21,12 +21,12 @@ import android.arch.lifecycle.MutableLiveData
 import br.com.diegonascimento.koinpresentation.model.ResultFilms
 import br.com.diegonascimento.koinpresentation.network.RequestResultCode
 import br.com.diegonascimento.koinpresentation.network.RequestResultValue
-import br.com.diegonascimento.koinpresentation.network.starwars.StarWarsClient
+import br.com.diegonascimento.koinpresentation.network.starwars.StarWarsApi
 import br.com.diegonascimento.koinpresentation.persistence.dao.FilmsDao
 import java.util.concurrent.Executor
 
 
-class FilmsRepository(private var starWarApi: StarWarsClient,
+class FilmsRepository(private var starWarApi: StarWarsApi,
                       private var filmsDao: FilmsDao,
                       private var executor: Executor) : BaseRepository(), FilmsRepositoryContract {
 
@@ -35,7 +35,7 @@ class FilmsRepository(private var starWarApi: StarWarsClient,
 
         executor.execute {
             doRequest({
-                var response = starWarApi.getApi().getFilms().execute()
+                var response = starWarApi.getFilms().execute()
 
                 if (response.isSuccessful) {
                     val requestResultCode = RequestResultCode.valueOf(response.code())
