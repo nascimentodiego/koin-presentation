@@ -28,13 +28,13 @@ android {
     productFlavors {
         production {
             versionName = android.defaultConfig.versionName
-            buildConfigField "String", API_ENDPOINT, '"http://swapi.co/api/"'
+            buildConfigField "String", API_ENDPOINT, '"https://swapi.co/api/"'
 
             dimension "startwars"
         }
         stage {
             versionName = "stage_" + android.defaultConfig.versionName
-            buildConfigField "String", API_ENDPOINT, '"http://swapi.co/api/"'
+            buildConfigField "String", API_ENDPOINT, '"https://swapi.co/api/"'
 
             dimension "startwars"
         }
