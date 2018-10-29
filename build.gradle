@@ -37,7 +37,7 @@ project.ext {
     architectureComponentsRoomRxJavaVersion = "rxjava2:1.1.0-beta3"
     architectureComponentsRoomCompilerVersion = "compiler:1.1.0-beta3"
 
-    koin = "1.0.0-beta-3"
+    koin = "1.0.1"
 
     gsonVersion = "2.8.0"
     roomVersion = "1.1.0"
