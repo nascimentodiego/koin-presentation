@@ -56,6 +56,7 @@ dependencies {
     implementation "org.koin:koin-android:$rootProject.ext.koin"
     implementation "org.koin:koin-android-viewmodel:$rootProject.ext.koin"
 
+
     // Architecture Components
     implementation "android.arch.lifecycle:$rootProject.ext.architectureComponentsExtensionVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.ext.androidConstraintLayoutVersion"
@@ -82,5 +83,6 @@ dependencies {
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoCoreVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoCoreVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoCoreVersion"
+    testImplementation "org.koin:koin-test:$rootProject.ext.koin"
 
 }

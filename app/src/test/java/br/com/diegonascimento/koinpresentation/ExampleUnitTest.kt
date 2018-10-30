@@ -1,17 +1,44 @@
 package br.com.diegonascimento.koinpresentation
 
+import android.app.Application
+import br.com.diegonascimento.koinpresentation.di.*
+import br.com.diegonascimento.koinpresentation.persistence.repository.FilmsRepositoryContract
+import org.junit.After
 import org.junit.Test
 
-import org.junit.Assert.*
+import org.junit.Before
+import org.koin.android.ext.koin.with
+import org.koin.standalone.StandAloneContext.startKoin
+import org.koin.standalone.StandAloneContext.stopKoin
+import org.koin.standalone.inject
+import org.koin.test.KoinTest
+import org.mockito.Mockito
+import org.mockito.Mockito.mock
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
+
+class ExampleUnitTest : KoinTest {
+
+    private val repository: FilmsRepositoryContract by inject()
+
+    @Before
+    fun before() {
+        startKoin(
+            listOf(
+                androidModule,
+                networkModule,
+                databaseTestModule,
+                repositoryModule
+            )
+        ) with mock(Application::class.java)
+    }
+
+    @After
+    fun after() {
+        stopKoin()
+    }
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun shouldGetFilms() {
+        Mockito.`when`(repository.getFilms()).thenCallRealMethod()
     }
 }
