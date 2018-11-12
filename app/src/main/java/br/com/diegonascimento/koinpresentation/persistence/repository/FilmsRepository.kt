@@ -18,6 +18,7 @@ package br.com.diegonascimento.koinpresentation.persistence.repository
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import br.com.diegonascimento.koinpresentation.diKodein.kodeinAndroidModule
 import br.com.diegonascimento.koinpresentation.model.ResultFilms
 import br.com.diegonascimento.koinpresentation.network.RequestResultCode
 import br.com.diegonascimento.koinpresentation.network.RequestResultValue
@@ -29,6 +30,8 @@ import java.util.concurrent.Executor
 class FilmsRepository(private var starWarApi: StarWarsApi,
                       private var filmsDao: FilmsDao,
                       private var executor: Executor) : BaseRepository(), FilmsRepositoryContract {
+
+
 
     override fun getFilms(): LiveData<RequestResultValue<ResultFilms>> {
         val data = MutableLiveData<RequestResultValue<ResultFilms>>()

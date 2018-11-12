@@ -55,6 +55,9 @@ dependencies {
     //DI
     implementation "org.koin:koin-android:$rootProject.ext.koin"
     implementation "org.koin:koin-android-viewmodel:$rootProject.ext.koin"
+    //KodeIn
+    implementation 'org.kodein.di:kodein-di-generic-jvm:5.3.0'
+    implementation 'org.kodein.di:kodein-di-framework-android-support:5.3.0'
 
     // Architecture Components
     implementation "android.arch.lifecycle:$rootProject.ext.architectureComponentsExtensionVersion"

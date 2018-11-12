@@ -16,19 +16,25 @@
 package br.com.diegonascimento.koinpresentation
 
 import android.app.Application
+import android.arch.persistence.room.Room
 import br.com.diegonascimento.koinpresentation.di.*
+import br.com.diegonascimento.koinpresentation.diKodein.kodeinAndroidModule
+import br.com.diegonascimento.koinpresentation.persistence.database.StarWarsDatabase
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.singleton
 import org.koin.android.ext.android.startKoin
 
 
-class StarWarsApplication : Application() {
-    companion object {
-        lateinit var sInstance: StarWarsApplication
-    }
+class StarWarsApplication : Application(), KodeinAware {
 
+    override val kodein: Kodein = Kodein {
+        import(kodeinAndroidModule)
+        import(kodeinDatabaseModule)
+    }
     override fun onCreate() {
         super.onCreate()
-        sInstance = this
-
         startKoin(this,
                 arrayListOf(
                         androidModule,
@@ -38,5 +44,15 @@ class StarWarsApplication : Application() {
                         viewModelModule
                 )
         )
+    }
+
+    val kodeinDatabaseModule = Kodein.Module(name = "DatabaseModule") {
+        bind<StarWarsDatabase>() with singleton {
+            Room.databaseBuilder<StarWarsDatabase>(
+                    this@StarWarsApplication,
+                    StarWarsDatabase::class.java,
+                    StarWarsDatabase.DB_NAME
+            ).build()
+        }
     }
 }
