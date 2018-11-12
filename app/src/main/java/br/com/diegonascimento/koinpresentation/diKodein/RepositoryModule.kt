@@ -23,8 +23,13 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
 
 
-val kodeinrepositoryModule = Kodein.Module(name = "kodeinrepositoryModule") {
+val kodeinRepositoryModule = Kodein.Module(name = "kodeinrepositoryModule") {
     bind<FilmsRepositoryContract>() with singleton {
-        FilmsRepository(instance(), instance(), instance("executor"))
+        FilmsRepository(
+            starWarApi =  instance(),
+            filmsDao =  instance(),
+            executor =  instance()
+        )
     }
 }
+

@@ -21,6 +21,6 @@ import org.kodein.di.generic.singleton
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-val kodeinAndroidModule = Kodein.Module(name = "Executor") {
+val kodeinAndroidModule = Kodein.Module("kodeinAndroidModule") {
     bind<Executor>() with singleton { Executors.newSingleThreadExecutor() as Executor }
 }

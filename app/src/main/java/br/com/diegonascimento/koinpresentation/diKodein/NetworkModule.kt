@@ -41,18 +41,18 @@ val kodeinNetworkModule = Kodein.Module(name = "kodeinNetworkModule") {
         }
 
         OkHttpClient.Builder()
-                .connectTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
-                .addInterceptor(httpLoggingInterceptor).build()
+            .connectTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(Constants.REQUEST_TIMEOUT, TimeUnit.SECONDS)
+            .addInterceptor(httpLoggingInterceptor).build()
     }
 
     bind<Retrofit>() with singleton {
         Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(Gson()))
-                .baseUrl(BuildConfig.API_ENDPOINT)
-                .client(instance())
-                .build()
+            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(Gson()))
+            .baseUrl(BuildConfig.API_ENDPOINT)
+            .client(instance())
+            .build()
     }
 
     bind<StarWarsApi>() with singleton {

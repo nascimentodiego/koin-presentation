@@ -15,11 +15,35 @@
  */
 package br.com.diegonascimento.koinpresentation.diKodein
 
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
 import br.com.diegonascimento.koinpresentation.feature.films.ListFilmsViewModel
-import org.koin.android.viewmodel.ext.koin.viewModel
-import org.koin.dsl.module.module
+import br.com.diegonascimento.koinpresentation.persistence.repository.FilmsRepositoryContract
+import org.kodein.di.Kodein
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.provider
+import org.kodein.di.generic.singleton
 
 
-val kodeinViewModelModule = module {
-    viewModel { ListFilmsViewModel(get()) }
+val kodeinViewModelModule = Kodein.Module(name = "kodeinViewModelModule") {
+    bind<ListFilmsViewModel>(tag = ListFilmsViewModel::class.java.simpleName) with provider {
+        ListFilmsViewModel(instance())
+    }
+
+    bind<ListFilmsViewModelFactory>() with singleton { ListFilmsViewModelFactory(instance()) }
+
+}
+
+
+class ListFilmsViewModelFactory constructor(private val filmsRepository: FilmsRepositoryContract): ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return if (modelClass.isAssignableFrom(ListFilmsViewModel::class.java)) {
+            ListFilmsViewModel(this.filmsRepository) as T
+        } else {
+            throw IllegalArgumentException("ViewModel Not Found")
+        }
+    }
+
 }
