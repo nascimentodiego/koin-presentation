@@ -27,17 +27,9 @@ import java.util.concurrent.Executor
 
 class ListFilmsActivity : BaseActivity(), KodeinAware {
 
-//    private val viewModel: ListFilmsViewModel by viewModel()
     private lateinit var adapter: ItemFilmAdapter
 
     override val kodein by closestKodein()
-    private val executor: Executor by instance()
-
-    private val okhttp: OkHttpClient by instance("OkHttpClient")
-    private val retrofit: Retrofit by instance()
-    private val api: StarWarsApi by instance()
-    private val starWarsDatabase:StarWarsDatabase  by instance()
-    private val filmsDao:FilmsDao  by instance()
 
     private val viewModeFactory: ViewModelProvider.Factory by instance()
     private val viewModel: ListFilmsViewModel by lazy {

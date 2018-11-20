@@ -8,6 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
+    def API_ENDPOINT = "API_ENDPOINT"
+    flavorDimensions "startwars"
     defaultConfig {
         applicationId "br.com.diegonascimento.koinpresentation"
         minSdkVersion 19
@@ -16,6 +18,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -23,12 +26,22 @@ android {
         }
     }
 
-    def API_ENDPOINT = "API_ENDPOINT"
-    flavorDimensions "startwars"
+    signingConfigs {
+        signingRelease {
+            storeFile file("../tools/key.jks")
+            storePassword System.getProperty("keyPassword")
+            keyAlias System.getProperty("keyAlias")
+            keyPassword System.getProperty("keyPassword")
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
     productFlavors {
         production {
             versionName = android.defaultConfig.versionName
             buildConfigField "String", API_ENDPOINT, '"https://swapi.co/api/"'
+            signingConfig signingConfigs.signingRelease
 
             dimension "startwars"
         }
