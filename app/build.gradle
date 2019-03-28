@@ -14,7 +14,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -47,20 +47,19 @@ dependencies {
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    //Android Support Library
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.androidSupportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$rootProject.ext.androidSupportLibraryVersion"
-    implementation "com.android.support:cardview-v7:$rootProject.ext.androidSupportLibraryVersion"
+    //Android X
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.recyclerview"
+    implementation "androidx.cardview:cardview:$rootProject.ext.recyclerview"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayout"
 
-    // Architecture Components
-    implementation "android.arch.lifecycle:$rootProject.ext.architectureComponentsExtensionVersion"
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.ext.androidConstraintLayoutVersion"
-    kapt "android.arch.lifecycle:$rootProject.ext.architectureComponentsCompileVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$rootProject.ext.lifecycleCompiler"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.ext.lifecycleExtensions"
+    implementation "androidx.lifecycle:lifecycle-common:$rootProject.ext.lifecycleCompiler"
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.ext.lifecycleCompiler"
 
-    // Room (use 1.1.0-beta3 for latest beta)
-    implementation "android.arch.persistence.room:$rootProject.ext.architectureComponentsRoomVersion"
-    implementation "android.arch.persistence.room:$rootProject.ext.architectureComponentsRoomRxJavaVersion"
-    kapt "android.arch.persistence.room:$rootProject.ext.architectureComponentsRoomCompilerVersion"
+    implementation "androidx.room:room-runtime:$rootProject.ext.roomRuntime"
+    kapt "androidx.room:room-compiler:$rootProject.ext.lifecycleCompiler"
 
     //Communication
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
@@ -74,9 +73,9 @@ dependencies {
     testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testImplementation "org.powermock:powermock-module-junit4:$rootProject.ext.powerMockito"
     testImplementation "org.powermock:powermock-api-mockito:$rootProject.ext.powerMockito"
-    androidTestImplementation "com.android.support.test:runner:$rootProject.espressoRunnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoCoreVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoCoreVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoCoreVersion"
+    androidTestImplementation "androidx.test:runner:$rootProject.ext.testRunner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoCore"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.ext.espressoContrib"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.ext.espressoIntents"
 
 }

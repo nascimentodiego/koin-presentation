@@ -16,9 +16,9 @@
 package br.com.diegonascimento.koinpresentation.feature.films
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.Room
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.room.Room
 import br.com.diegonascimento.koinpresentation.model.ResultFilms
 import br.com.diegonascimento.koinpresentation.network.RequestResultValue
 import br.com.diegonascimento.koinpresentation.network.starwars.StarWarsClient

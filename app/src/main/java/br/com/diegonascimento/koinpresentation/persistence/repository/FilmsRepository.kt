@@ -16,8 +16,8 @@
 
 package br.com.diegonascimento.koinpresentation.persistence.repository
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import br.com.diegonascimento.koinpresentation.model.ResultFilms
 import br.com.diegonascimento.koinpresentation.network.RequestResultCode
 import br.com.diegonascimento.koinpresentation.network.RequestResultValue
