@@ -39,6 +39,7 @@ project.ext {
     lifecycleCompiler = '2.0.0-rc01'
     roomRuntime = '2.1.0-alpha06'
     lifecycleExtensions = '2.1.0-alpha03'
+    coreTesting = '2.0.0-rc01'
 
     testRunner = '1.1.0'
     espressoCore ='3.1.0'
@@ -55,8 +56,8 @@ project.ext {
     okhttp = "3.4.1"
 
     jUnitVersion = '4.12'
-    mockitoVersion = '1.10.19'
-    powerMockito = '1.6.2'
+    mockito = "2.19.0"
+
     espressoRunnerVersion = '1.0.1'
     espressoCoreVersion = '3.0.1'
 

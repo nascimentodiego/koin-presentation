@@ -22,7 +22,6 @@ import br.com.diegonascimento.koinpresentation.model.ResultFilms
 import br.com.diegonascimento.koinpresentation.network.RequestResultCode
 import br.com.diegonascimento.koinpresentation.network.RequestResultValue
 import br.com.diegonascimento.koinpresentation.network.starwars.StarWarsApi
-import br.com.diegonascimento.koinpresentation.network.starwars.StarWarsClient
 import br.com.diegonascimento.koinpresentation.persistence.dao.FilmsDao
 import java.util.concurrent.Executor
 

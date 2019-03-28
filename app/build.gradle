@@ -75,9 +75,11 @@ dependencies {
 
     //Tests
     testImplementation "junit:junit:$rootProject.jUnitVersion"
-    testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
-    testImplementation "org.powermock:powermock-module-junit4:$rootProject.ext.powerMockito"
-    testImplementation "org.powermock:powermock-api-mockito:$rootProject.ext.powerMockito"
+    testImplementation "org.mockito:mockito-core:$rootProject.ext.mockito"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.ext.coreTesting"
+    // Koin for Unit tests
+    testImplementation "org.koin:koin-test:$koin_version"
+
     androidTestImplementation "androidx.test:runner:$rootProject.ext.testRunner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoCore"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.ext.espressoContrib"

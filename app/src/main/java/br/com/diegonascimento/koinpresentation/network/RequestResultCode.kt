@@ -21,40 +21,40 @@ sealed class RequestResultCode(val errorCode: Int) {
     companion object {
         fun valueOf(errorCode: Int): RequestResultCode {
             return when (errorCode) {
-                200 -> Success()
-                408 -> Timeout()
-                304 -> NotModified()
-                400 -> BadRequest()
-                401 -> Unauthorized()
-                404 -> NotFound()
-                403 -> Forbidden()
-                422 -> UnprocessableEntity()
-                500 -> InternalServerError()
-                405 -> MethodNotAllowed()
-                998 -> NoConnectionAvailable()
-                1001 -> JsonSyntaxResult()
-                410 -> Gone()
-                555 -> SslFail()
-                else -> UnknownError()
+                200 -> Success
+                408 -> Timeout
+                304 -> NotModified
+                400 -> BadRequest
+                401 -> Unauthorized
+                404 -> NotFound
+                403 -> Forbidden
+                422 -> UnprocessableEntity
+                500 -> InternalServerError
+                405 -> MethodNotAllowed
+                998 -> NoConnectionAvailable
+                1001 -> JsonSyntaxResult
+                410 -> Gone
+                555 -> SslFail
+                else -> UnknownError
             }
         }
     }
 
 
-    class Success : RequestResultCode(errorCode = 200)
-    class Timeout : RequestResultCode(errorCode = 408)
-    class NotModified : RequestResultCode(errorCode = 304)
-    class BadRequest : RequestResultCode(errorCode = 400)
-    class Unauthorized : RequestResultCode(errorCode = 401)
-    class NotFound : RequestResultCode(errorCode = 404)
-    class Forbidden : RequestResultCode(errorCode = 403)
-    class UnprocessableEntity : RequestResultCode(errorCode = 422)
-    class InternalServerError : RequestResultCode(errorCode = 500)
-    class MethodNotAllowed : RequestResultCode(errorCode = 405)
-    class NoConnectionAvailable : RequestResultCode(errorCode = 998)
-    class JsonSyntaxResult : RequestResultCode(errorCode = 1001)
-    class Gone : RequestResultCode(errorCode = 410)
-    class SslFail : RequestResultCode(errorCode = 555)
-    class UnknownError : RequestResultCode(errorCode = 999)
+    object Success : RequestResultCode(errorCode = 200)
+    object Timeout : RequestResultCode(errorCode = 408)
+    object NotModified : RequestResultCode(errorCode = 304)
+    object BadRequest : RequestResultCode(errorCode = 400)
+    object Unauthorized : RequestResultCode(errorCode = 401)
+    object NotFound : RequestResultCode(errorCode = 404)
+    object Forbidden : RequestResultCode(errorCode = 403)
+    object UnprocessableEntity : RequestResultCode(errorCode = 422)
+    object InternalServerError : RequestResultCode(errorCode = 500)
+    object MethodNotAllowed : RequestResultCode(errorCode = 405)
+    object NoConnectionAvailable : RequestResultCode(errorCode = 998)
+    object JsonSyntaxResult : RequestResultCode(errorCode = 1001)
+    object Gone : RequestResultCode(errorCode = 410)
+    object SslFail : RequestResultCode(errorCode = 555)
+    object UnknownError : RequestResultCode(errorCode = 999)
 
 }
