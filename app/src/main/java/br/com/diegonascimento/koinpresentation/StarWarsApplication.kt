@@ -16,15 +16,27 @@
 package br.com.diegonascimento.koinpresentation
 
 import android.app.Application
+import br.com.diegonascimento.koinpresentation.di.*
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 
 class StarWarsApplication : Application() {
-    companion object {
-        lateinit var sInstance: StarWarsApplication
-    }
 
     override fun onCreate() {
         super.onCreate()
-        sInstance = this
+
+        startKoin {
+            // Android context
+            androidContext(this@StarWarsApplication)
+            // modules
+            modules(
+                    androidModule,
+                    databaseModule,
+                    networkModule,
+                    repositoryModule,
+                    viewModelModule
+            )
+        }
     }
 }

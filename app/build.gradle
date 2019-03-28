@@ -46,6 +46,11 @@ dependencies {
 
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    //Koin
+    implementation "org.koin:koin-core:$rootProject.ext.koin_version"
 
     //Android X
     implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"

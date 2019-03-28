@@ -15,30 +15,20 @@
  */
 package br.com.diegonascimento.koinpresentation.feature.films
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.room.Room
+import androidx.lifecycle.ViewModel
 import br.com.diegonascimento.koinpresentation.model.ResultFilms
 import br.com.diegonascimento.koinpresentation.network.RequestResultValue
-import br.com.diegonascimento.koinpresentation.network.starwars.StarWarsClient
-import br.com.diegonascimento.koinpresentation.persistence.database.StarWarsDatabase
-import br.com.diegonascimento.koinpresentation.persistence.repository.FilmsRepository
-import java.util.concurrent.Executors
+import br.com.diegonascimento.koinpresentation.persistence.repository.FilmsRepositoryContract
 
 
-class ListFilmsViewModel(var app: Application) : AndroidViewModel(app) {
+class ListFilmsViewModel(private val filmsRepository: FilmsRepositoryContract) : ViewModel() {
     private var mFilms: LiveData<RequestResultValue<ResultFilms>>? = null
-    private var filmsRepository: FilmsRepository? = null
 
-    fun int() {
-        val db = Room.databaseBuilder(app, StarWarsDatabase::class.java, StarWarsDatabase.DB_NAME).build()
-        filmsRepository = FilmsRepository(StarWarsClient, db.filmsDao(), Executors.newSingleThreadExecutor())
-    }
 
     fun getFilms(): LiveData<RequestResultValue<ResultFilms>>? {
         if (mFilms == null) {
-            mFilms = filmsRepository?.getFilms()
+            mFilms = filmsRepository.getFilms()
         }
 
         return this.mFilms

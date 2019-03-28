@@ -14,14 +14,5 @@ abstract class StarWarsDatabase : RoomDatabase() {
 
     companion object {
         val DB_NAME = "starwars_db"
-        var dbInstance: StarWarsDatabase? = null
-
-        fun getDatabase(context: Context): StarWarsDatabase? {
-            if (dbInstance == null) {
-                dbInstance = Room.databaseBuilder<StarWarsDatabase>(context.applicationContext,
-                        StarWarsDatabase::class.java, DB_NAME).build()
-            }
-            return dbInstance
-        }
     }
 }
